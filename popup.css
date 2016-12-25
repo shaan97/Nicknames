@@ -1,0 +1,71 @@
+body {
+	width: 500px;
+	height: 250px;
+	background-color: #FFB6C1;
+	border-style: solid;
+	border-color: white;
+}
+
+#outer{
+	margin-left: 17.5%;
+}
+
+
+
+#old_name{
+	float: left;
+	margin-right: 100%;
+}
+
+#new_name{
+	float: left;
+	margin-right: 100%;
+}
+
+input {
+	font-size: 14pt;
+	font-family: 'Raleway', sans-serif;
+	padding-top: 2.5%;
+	padding-bottom: 2.5%;
+	padding-right: 10.1%;
+	padding-left: 10.1%;
+	text-align: center;
+	margin: 0px;
+}
+
+button {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 13%;
+	padding-left: 13%;
+	opacity: .5;
+	font-family: 'Raleway', cursive;
+	background-color: white;
+	transition-duration: .2s;
+
+}
+
+button:hover{
+	transition-duration: .2s;
+	opacity: 1;
+}
+
+#title_text {
+	font-family: 'Parisienne', cursive;
+	font-size: 30pt;
+	text-align: center;
+	color: white;
+	margin-right: 20%;
+	margin-top: 5%;
+}
+
+#instr {
+	text-align: center;
+	margin-right: 25%;
+}
+
+#add_section{
+	margin-left: 5%;
+	margin-top: -10%;
+}
+

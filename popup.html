@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
+		<link rel = "stylesheet" type = "text/css" href = "popup.css">
 		<script src = "background.js"></script>
 	</head>
 
 	<body>
+	<div id = "outer">
+		<p id = "title_text">Nickname</p>
 		<div id = "add_section">
-			<p>Add New Nickname:</p>
-			<input type = "text" id = "old_name" />
-			<input type = "text" id = "new_name" />
+			<p id = "instr">Add New Nickname:</p>
+			<input type = "text" id = "old_name" placeholder = "Name"/>
+			<input type = "text" id = "new_name" placeholder = "Nickname"/>
+			<button id = "clear_button">Clear</button>
 			<button id = "submit_button" href = "javascript:;">Submit</button>
 		</div>
+			
 
-		<div id = "clear_section">
-			<button id = "clear_button">Clear</button>
-		</div>
+	</div>
 
-		
 	</body>
 
 </html>
