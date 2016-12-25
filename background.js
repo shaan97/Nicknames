@@ -39,12 +39,36 @@ function submit(){
 		return;
 	}
 
+
+	// Remember the nickname
+	var pair = {};
+	pair[old_name] = new_name;
+	chrome.storage.sync.set(pair, function(){
+		// Notify that saving was successful
+		console.log(old_name + " : " + new_name + " key/value pair saved.");
+	})
+
+	// Apply the nickname
 	apply_nickname(old_name, new_name);
+}
+
+function clear_data(){
+	chrome.storage.sync.clear(function(){
+		// Notify that all data was cleared
+		console.log("All data cleared.");
+	});
 }
 
 document.addEventListener('DOMContentLoaded', function(){
 	var x = document.getElementById("submit_button");
 	x.addEventListener('click', function(){
 		submit();
+	});
+});
+
+document.addEventListener('DOMContentLoaded', function(){
+	var x = document.getElementById("clear_button");
+	x.addEventListener('click', function(){
+		clear_data();
 	});
 });
