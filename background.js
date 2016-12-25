@@ -23,6 +23,9 @@ function apply_nickname(old_name, new_name){
 function submit(){
 	var old_name = document.getElementById("old_name").value;
 	var new_name = document.getElementById("new_name").value;
+	document.getElementById("old_name").value = "";
+	document.getElementById("new_name").value = "";
+	
 	console.log("Replace " + old_name + " with " + new_name);
 	var failure = false;
 
