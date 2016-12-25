@@ -1,5 +1,25 @@
-alert("Content.js injected");
 var names = {};
+chrome.storage.sync.get(null, function(items){
+	names = items;
+	console.log("Loaded from storage.");
+});
+
+window.onload = function() { 
+	refresh(); 
+};
+
+function refresh() {
+	for(var name in names){
+		setNickname(name);
+	}
+}
+
+chrome.runtime.onMessage.addListener(
+	function(request, sender, sendResponse){
+		console.log("Setting up replacements for " + request.old_name + " and " + request.new_name);
+		names[request.old_name] = request.new_name;
+		setNickname(request.old_name);
+	});
 
 function editText(old_name, node){
 	if(node.nodeName === "#text"){
@@ -29,11 +49,5 @@ function setAllNicknames(){
 }
 */
 
-chrome.runtime.onMessage.addListener(
-	function(request, sender, sendResponse){
-		console.log("Setting up replacements for " + request.old_name + " and " + request.new_name);
-		names[request.old_name] = request.new_name;
-		setNickname(request.old_name);
-	});
 
 //setAllNicknames();
