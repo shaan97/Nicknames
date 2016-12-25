@@ -5,7 +5,8 @@ chrome.storage.sync.get(null, function(items){
 });
 
 window.onload = function() { 
-	refresh(); 
+	refresh();
+	setInterval(refresh, 5000);
 };
 
 function refresh() {
@@ -14,6 +15,9 @@ function refresh() {
 	}
 }
 
+
+
+
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse){
 		console.log("Setting up replacements for " + request.old_name + " and " + request.new_name);
@@ -21,33 +25,21 @@ chrome.runtime.onMessage.addListener(
 		setNickname(request.old_name);
 	});
 
-function editText(old_name, node){
+function editText(old_name, node, action) {
 	if(node.nodeName === "#text"){
-		var old = new RegExp(old_name, "g");
-		var rep = names[old_name];
-		node.textContent = node.textContent.replace(old, rep);
+		action(old_name, node);
 	}
 	var children = node.childNodes;
 	for(var i = 0; i < children.length; i++){
-		editText(old_name, children[i]);
+		editText(old_name, children[i], action);
 	}
 }
 
 function setNickname(old_name){
-	editText(old_name, document.body)
+	editText(old_name, document.body, function(old_name, node){
+		var old = new RegExp(old_name, "g");
+		var rep = names[old_name];
+		node.textContent = node.textContent.replace(old, rep);
+	});
 
 }
-
-/*
-function setAllNicknames(){
-	var words = document.body.innerHTML.split(" ");
-	var mod;
-	for(var word in words){
-		mod += word
-	}
-
-}
-*/
-
-
-//setAllNicknames();
